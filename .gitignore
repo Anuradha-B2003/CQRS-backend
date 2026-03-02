@@ -1,0 +1,62 @@
+# Visual Studio / .NET
+.vs/
+.vscode/
+.idea/
+
+# Build outputs
+[Bb]in/
+[Oo]bj/
+artifacts/
+publish/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# NuGet packages and caches
+packages/
+*.nupkg
+project.lock.json
+
+# Dotnet generated files
+*.csproj.user
+*.dotCover
+TestResults/
+coverage/
+coverage.*.*
+*.coverage
+*.coveragexml
+
+# Logs, databases, and temporary files
+*.log
+*.sqlite
+*.db
+*.mdf
+*.ldf
+*.cache
+
+# Static web / node
+node_modules/
+wwwroot/node_modules/
+
+# Rider / JetBrains
+_ReSharper*/
+*.sln.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local secrets and developer settings
+secrets.json
+appsettings.*.Local.json
+
+# VSIX / deployment
+*.vsix
+
+# Ignore publish artifacts from dotnet publish/pack
+publish/
+bin-*/
