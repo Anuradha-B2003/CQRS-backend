@@ -19,14 +19,6 @@ namespace CleanArchitectureCQRS.Application.Blogs.Commands
             CancellationToken cancellationToken)
         {
             
-                if (string.IsNullOrWhiteSpace(request.Name))
-                    throw new ArgumentException("Name is required");
-
-                if (string.IsNullOrWhiteSpace(request.Content))
-                    throw new ArgumentException("Content is required");
-
-                if (request.Age <= 0)
-                    throw new ArgumentException("Age must be greater than 0");
 
                 var blog = new Blog
                 {
@@ -37,10 +29,7 @@ namespace CleanArchitectureCQRS.Application.Blogs.Commands
 
                 return await _blogrepo.CreateAsync(blog);
             
-            //catch (Exception ex)
-            //{
-            //    throw new Exception($"Error creating blog: {ex.Message}");
-            //}
+           
         }
     }
 }

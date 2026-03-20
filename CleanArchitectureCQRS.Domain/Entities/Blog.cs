@@ -9,10 +9,18 @@ using System.Threading.Tasks;
     {
         public class Blog
         {
-            public int Id { get; set; } 
-            public string Name { get; set; }= string.Empty;
-            public int Age { get; set; } 
-            public string Content { get; set; } = string.Empty;
+            public int Id { get; set; }
+            private string _name = string.Empty;
+            public string Name {
+            get=>_name;
+            set=>_name=value?.Trim()??string.Empty; 
+            }
+            public int Age { get; set; }
+            private string _content = string.Empty;
+            public string Content { 
+            get=>_content;
+            set=>_content=value?.Trim()??string.Empty; 
+            } 
            
         }
     }

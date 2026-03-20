@@ -38,10 +38,10 @@ namespace CleanArchitectureCQRS.Infrastructure.Repositories
             return true;
         }
 
-        public async Task<List<Blog>> GetAllAsync()
-        {
-            return await _context.Blogs.ToListAsync();
-        }
+        //public async Task<List<Blog>> GetAllAsync()
+        //{
+        //    return await _context.Blogs.ToListAsync();
+        //}
 
         public async Task<Blog?> GetByIdAsync(int id)
         {
@@ -64,6 +64,35 @@ namespace CleanArchitectureCQRS.Infrastructure.Repositories
 
             return existingBlog;
 
+        }
+        public async Task<bool> BulkDeleteAsync(List<int> ids)
+        {
+            var blogs = await _context.Blogs
+                .Where(b => ids.Contains(b.Id))
+                .ToListAsync();
+
+            if (!blogs.Any())
+                return false;
+
+            _context.Blogs.RemoveRange(blogs);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+        public async Task<Blog?> UpdateIfExistsAsync(Blog blog)
+        {
+            var existing = await _context.Blogs.FindAsync(blog.Id);
+
+            if (existing == null)
+                return null;
+
+            existing.Name = blog.Name;
+            existing.Age = blog.Age;
+            existing.Content = blog.Content;
+
+            await _context.SaveChangesAsync();
+
+            return existing;
         }
     }
 }

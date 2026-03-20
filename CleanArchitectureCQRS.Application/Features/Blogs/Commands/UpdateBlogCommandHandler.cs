@@ -21,14 +21,7 @@ namespace CleanArchitectureCQRS.Application.Features.Blogs.Commands
 
         public async Task<Blog?> Handle(UpdateBlogCommand request, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(request.Name))
-                throw new Exception("Name is required");
-
-            if (string.IsNullOrWhiteSpace(request.Content))
-                throw new Exception("Content is required");
-
-            if (request.Age <= 0)
-                throw new Exception("Age must be greater than 0");
+           
             var blog = new Blog
             {
                 Name = request.Name,

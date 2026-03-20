@@ -4,21 +4,22 @@ using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using CleanArchitectureCQRS.Application.Interfaces;
 
 namespace CleanArchitectureCQRS.Application.Features.Blogs.Queries.GetAllBlogs
 {
     public class GetAllBlogsHandler : IRequestHandler<GetAllBlogsQuery, List<Blog>>
     {
-        private readonly IBlogrepo _blogrepo;
+        private readonly IBlogQueryRepository _blogQueryRepository;
 
-        public GetAllBlogsHandler(IBlogrepo blogrepo)
+        public GetAllBlogsHandler(IBlogQueryRepository blogQueryRepository)
         {
-            _blogrepo = blogrepo;
+            _blogQueryRepository = blogQueryRepository;
         }
 
         public async Task<List<Blog>> Handle(GetAllBlogsQuery request, CancellationToken cancellationToken)
         {
-            return await _blogrepo.GetAllAsync();
+            return await _blogQueryRepository.GetAllAsync();
         }
     }
 }

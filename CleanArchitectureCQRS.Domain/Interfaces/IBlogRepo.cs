@@ -9,10 +9,12 @@ namespace CleanArchitectureCQRS.Domain.Interfaces
 {
     public interface IBlogrepo
     {
-        Task<List<Blog>> GetAllAsync();
+       // Task<List<Blog>> GetAllAsync();
         Task<Blog?> GetByIdAsync(int id);
         Task<Blog> CreateAsync(Blog blog);
         Task<Blog?> UpdateAsync(int id, Blog blog);
         Task<bool> DeleteAsync(int id);
+        Task<bool> BulkDeleteAsync(List<int> ids);
+        Task<Blog?> UpdateIfExistsAsync(Blog blog);
     }
 }
